@@ -1,0 +1,189 @@
+.unik-name-details {
+  display:  flex;
+  flex-direction: column;
+  border-left: 1px solid #ddd;
+  opacity: 1;
+  padding-left: 1rem;
+}
+
+.unik-name-details .card-header {
+  padding: 0px;
+}
+
+.unik-name-details .card-header .card-header-text {
+  font-size: 1.2em;
+  /*color: #fff;*/
+  font-weight: bold;
+  /*background-color: #201c60;*/
+  padding: 1rem 1rem 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+
+.unik-name-details .card-header-text .profile_picture img {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin-right: 1rem;
+
+}
+
+.unik-name-details .card-header-text .profile_picture {
+  position: relative;
+}
+
+.unik-name-details .card-header-text .profile_picture:after {
+  position: absolute;
+  bottom: 0px;
+  right: 8px;
+  content: "👤";
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.unik-name-details .card-header-text .profile_picture.indiv:after {
+  content: "👤";
+}
+
+.unik-name-details .card-header-text .profile_picture.team:after {
+  content: "👥";
+}
+
+.unik-name-details .card-header-text .profile_picture.corp:after {
+  content: "🏢";
+}
+
+.unik-name-details .card-header-text .profile_picture.gov:after {
+  content: "🌍";
+}
+
+.unik-name-details .card-body {
+  padding: 0rem 1.5rem 0.5rem 1.5rem;
+}
+
+.unik-name-details .card-body .coins {
+  margin-top: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-flow: row wrap;
+  display: flex;
+}
+
+.unik-name-details .card-body .coins .coin {
+  background-color:transparent;
+    color: #EB1459 !important;
+    border: 1px solid #EB1459 !important;
+  color: #000;
+  margin: 0.5rem 0rem;
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.unik-name-details .card-body .security {
+  padding: 1rem 0px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1.1em;
+  font-weight: 600;
+  flex-direction: row;
+}
+
+.unik-name-details .card-body .security .trust {
+  display: flex;
+
+}
+
+.unik-name-details .card-body .security .trust .stars {
+    display: flex;
+    margin-left: 0.25rem;
+    color: #333;
+}
+
+.unik-name-details .card-body .security .unik-check {
+  display: flex;
+  padding-left: 0.75rem;
+}
+
+.unik-name-details .card-body .security .unik-check .check {
+  border-radius: 50%;
+  margin-left: 0.25rem;
+  color: darkred;
+  font-size: 1.2em;
+  position: relative;
+  z-index: 1;
+}
+
+.unik-name-details .card-body .security .unik-check .check.trusted {
+  color: green;
+}
+
+.unik-name-details .card-body .coins .coin img {
+  margin-right: 0.5rem;
+}
+
+.unik-name-details .card-body label {
+  font-weight: 600;
+}
+
+.unik-name-details .card-body .link {
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 0.8em;
+}
+
+.unik-name-details .card-body .link a,
+.unik-name-details .card-body .link a:hover,
+.unik-name-details .card-body .link a:active,
+.unik-name-details .card-body .link a:focus {
+  color: #6C7B8A;
+  text-decoration: none;
+}
+
+.animate-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show-hide.slow-animation.ng-hide-add,
+.animate-show-hide.slow-animation.ng-hide-remove {
+  transition-duration: 1s;
+}
+
+.validate-unikard {
+  position: fixed;
+  right:10%;
+  bottom: 15%;
+  z-index: 1000000000;
+}
+
+.validate-unikard-closer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999999999;
+}
+
+.unik-name {
+  color: #C4C4C4;
+}
+
+.unik-address {
+  font-weight: 600;
+  font-style: italic;
+}

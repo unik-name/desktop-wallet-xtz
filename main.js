@@ -96,6 +96,7 @@ function createMenu() {
 app.on('ready',function(){
   createWindow();
   createMenu();
+  mainWindow.webContents.openDevTools();
 });
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {

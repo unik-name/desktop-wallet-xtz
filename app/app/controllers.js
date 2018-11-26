@@ -168,6 +168,9 @@ app
     }
 		$scope.password = '';
   }
+
+  $scope.resolvedUnikName = undefined;
+
   setBalance = function(r){
     var rb = parseInt(r);
     var bal = $scope.toTez(rb); 
@@ -499,7 +502,7 @@ app
     if (fee != parseInt(fee)) return SweetAlert.swal(Lang.translate('uh_oh'), Lang.translate('error_invalid_fee'), 'error');
     SweetAlert.swal({
       title: Lang.translate('are_you_sure'),
-      text: Lang.translate('transaction_confirm_info', [$scope.amount, $scope.toaddress]),
+      text: Lang.translate('transaction_confirm_info', [$scope.amount, $scope.resolvedUnikName.resolver.unikname, $scope.toaddress]),
       type : "warning",
       showCancelButton: true,
       confirmButtonText: Lang.translate('yes_send_it'),
@@ -750,7 +753,43 @@ app
 		$scope.$apply(function(){
 			refreshAll();
 		});
-	}, 20000);
+  }, 20000);
+  
+
+  $scope.resolveAddress = async () => {
+    let unikname = $scope.unikname;
+    try {
+      if (unikname) {
+        let resolvedUnikName = await resolveUnikname(unikname);
+        $scope.resolvedUnikName = resolvedUnikName.data;
+        $scope.toaddress = $scope.resolvedUnikName.resolver.address.trim();
+      }
+    } catch(e) {
+      if (e.status) {
+        switch(e.status) {
+          case 404:
+            $scope.resolvedUnikName = undefined;
+            break;
+          default:
+            console.error(e)
+            throw(e);
+        }
+      } else {
+        console.error(e);
+      }
+    }
+    // Forec refresh to redraw
+    $scope.refresh();
+  }
+
+  function resolveUnikname(unikname){
+    let uniknameAndLabel = unikname.split('#');
+    return $http({
+      method:'GET',
+      url: `http://localhost:3000/uniknames/${uniknameAndLabel[0]}/labels/${uniknameAndLabel[1] ? uniknameAndLabel[1] : 'default'}/types/XTZ`
+    });
+  }
+
 }])
 .controller('SettingController', ['$scope', '$location', 'Storage', 'SweetAlert', 'Lang', function($scope, $location, Storage, SweetAlert, Lang) {
   $scope.setting = Storage.settings;

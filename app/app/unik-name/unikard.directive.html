@@ -1,0 +1,50 @@
+<div>
+    <div class="card unik-name-details animate-show-hide {{slowAnimation ? 'slow-animation' : ''}}" md-theme="dark-grey" md-theme-watch ng-show="unikname">
+        <div class="card-header">
+          <div class="card-header-text">
+            <span class="profile_picture {{unikname.type}}">
+              <img ng-src="{{unikname.profile.picture}}" />
+            </span>
+            <span>
+              @{{ unikname.resolver.unikname }}
+            </span>
+          </div>
+        </div>
+        <div class="card-body" layout="column">
+          <div layout="row" class="security">
+            <label class="trust">
+              <span>Trust :</span>
+              <span class="stars">
+                <span ng-repeat="n in unikRange(1,unikname.security.trust)">★</span>
+                <span ng-repeat="n in unikRange(1, 5 - unikname.security.trust)">☆</span>
+              </span>
+            </label>
+            <label class="unik-check">
+              Unik :
+              <span class="check trusted" ng-if="unikname.security.unik">🗸</span>
+              <span class="check" ng-if="!unikname.security.unik">❌</span>
+            </label>
+          </div>
+          <div layout="column">
+            <label>
+              Coin supported by
+              <span ng-if="unikname.resolver.label && unikname.resolver.label !== 'default'"> #{{unikname.resolver.label}}</span>
+            </label>
+            <div class="coins">
+              <span class="coin" ng-repeat="coin in unikname.supportedTypes">
+                    <img ng-src="{{coin.image}}"/>
+                  <span>
+                    {{ coin.label }}
+                  </span>
+              </span>
+            </div>
+          </div>
+          <div class="link">
+            <a href="https://unik-name.com">unik-name.com</a>
+          </div>
+        </div>
+      </div>
+      <div ng-show="!unikname">
+        NOT FOUND
+      </div>
+</div>
