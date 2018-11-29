@@ -1,5 +1,5 @@
 <div>
-    <div class="card unik-name-details animate-show-hide {{slowAnimation ? 'slow-animation' : ''}}" md-theme="dark-grey" md-theme-watch ng-show="unikname">
+    <div class="card unik-name-details animate-show-hide {{slowAnimation ? 'slow-animation' : ''}}" md-theme="dark-grey" md-theme-watch ng-show="unikname.profile">
         <div class="card-header">
           <div class="card-header-text">
             <span class="profile_picture {{unikname.type}}">
@@ -27,14 +27,14 @@
           </div>
           <div layout="column">
             <label>
-              Coin supported by
+              Supported by
               <span ng-if="unikname.resolver.label && unikname.resolver.label !== 'default'"> #{{unikname.resolver.label}}</span>
             </label>
             <div class="coins">
               <span class="coin" ng-repeat="coin in unikname.supportedTypes">
                     <img ng-src="{{coin.image}}"/>
                   <span>
-                    {{ coin.label }}
+                    {{ coin.type }}
                   </span>
               </span>
             </div>
@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div ng-show="!unikname">
-        NOT FOUND
+      <div ng-show="unikname.error">
+        {{ unikname.error }}
       </div>
 </div>

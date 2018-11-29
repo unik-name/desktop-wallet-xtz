@@ -763,30 +763,53 @@ app
         let resolvedUnikName = await resolveUnikname(unikname);
         $scope.resolvedUnikName = resolvedUnikName.data;
         $scope.toaddress = $scope.resolvedUnikName.resolver.address.trim();
+
+        console.log("RESOLVED: ", $scope.resolvedUnikName);
       }
     } catch(e) {
+      console.log("CATCH : ",e);
       if (e.status) {
         switch(e.status) {
+          case 401:
+          case 403:
           case 404:
-            $scope.resolvedUnikName = undefined;
+            $scope.resolvedUnikName = {error: e.data};
             break;
           default:
-            console.error(e)
+            console.error("DEFAULT SWITCH STATUS ERROR : ", e);
             throw(e);
         }
+        
+        $scope.toaddress = undefined;
       } else {
         console.error(e);
       }
     }
-    // Forec refresh to redraw
+    // Force refresh to redraw
     $scope.refresh();
   }
 
   function resolveUnikname(unikname){
-    let uniknameAndLabel = unikname.split('#');
+
+    let headers = {
+      Pragma: undefined,
+      'Cache-Control': undefined,
+      'X-Requested-With': undefined,
+      'If-Modified-Since': undefined,
+      'x-pm-appversion': undefined,
+      'x-pm-uid': undefined,
+      'x-pm-apiversion': undefined
+    };
+
+    if ($scope.myUnikName) {
+      headers['Authorization'] = `Basic ${$scope.myUnikName.replace('@', '')}`;
+    }
+
+    let uniknameAndLabel = unikname.replace('@', '').split('#');
     return $http({
       method:'GET',
-      url: `http://localhost:3000/uniknames/${uniknameAndLabel[0]}/labels/${uniknameAndLabel[1] ? uniknameAndLabel[1] : 'default'}/types/XTZ`
+      url: `http://localhost:3000/uniknames/${uniknameAndLabel[0]}/labels/${uniknameAndLabel[1] ? uniknameAndLabel[1] : 'default'}/types/XTZ`,
+      headers: headers
     });
   }
 

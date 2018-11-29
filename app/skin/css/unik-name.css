@@ -187,3 +187,9 @@
   font-weight: 600;
   font-style: italic;
 }
+
+#myUnikName {
+  width: 80%;
+  margin-left: 10%;
+  padding-left: 0.5rem;
+}
