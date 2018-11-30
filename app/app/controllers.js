@@ -500,9 +500,13 @@ app
     if (fee < 0) return SweetAlert.swal(Lang.translate('uh_oh'), Lang.translate('error_positive_fee'));
     if ($scope.amount != parseFloat($scope.amount)) return SweetAlert.swal(Lang.translate('uh_oh'), Lang.translate('error_invalid_amount'), 'error');
     if (fee != parseInt(fee)) return SweetAlert.swal(Lang.translate('uh_oh'), Lang.translate('error_invalid_fee'), 'error');
+    
+    let toUnikName = $scope.resolvedUnikName ? `@${$scope.resolvedUnikName.resolver.unikname}` : '';
+    let toAddress = $scope.resolvedUnikName ? `(${$scope.toaddress})` : $scope.toaddress;
+    
     SweetAlert.swal({
       title: Lang.translate('are_you_sure'),
-      text: Lang.translate('transaction_confirm_info', [$scope.amount, $scope.resolvedUnikName.resolver.unikname, $scope.toaddress]),
+      text: Lang.translate('transaction_confirm_info', [$scope.amount, toUnikName, toAddress]),
       type : "warning",
       showCancelButton: true,
       confirmButtonText: Lang.translate('yes_send_it'),
@@ -760,11 +764,15 @@ app
     let unikname = $scope.unikname;
     try {
       if (unikname) {
-        let resolvedUnikName = await resolveUnikname(unikname);
-        $scope.resolvedUnikName = resolvedUnikName.data;
-        $scope.toaddress = $scope.resolvedUnikName.resolver.address.trim();
-
-        console.log("RESOLVED: ", $scope.resolvedUnikName);
+        if (unikname.indexOf('@') === 0) {
+          let resolvedUnikName = await resolveUnikname(unikname);
+          $scope.resolvedUnikName = resolvedUnikName.data;
+          $scope.toaddress = $scope.resolvedUnikName.resolver.address.trim();
+          console.log("RESOLVED: ", $scope.resolvedUnikName);
+        } else {
+          $scope.toaddress = unikname;
+          $scope.resolvedUnikName = undefined;
+        }
       }
     } catch(e) {
       console.log("CATCH : ",e);
@@ -777,11 +785,13 @@ app
             break;
           default:
             console.error("DEFAULT SWITCH STATUS ERROR : ", e);
+            $scope.resolvedUnikName = undefined;
             throw(e);
         }
-        
         $scope.toaddress = undefined;
       } else {
+        $scope.toaddress = undefined;
+        $scope.resolvedUnikName = undefined;
         console.error(e);
       }
     }

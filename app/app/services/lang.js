@@ -208,7 +208,7 @@ app.service('Lang', ["$sce", function($sce) {
         "import_kt_address_info" : "We have found $$ KT1 address(es) linked to your public key - would you like to import them now? (You can also manually import these by going to Options > Import)",
         "yes_import_them" : "Yes, import them!",
         "ico_restore_success" : "You have successfully restored your ICO wallet. If you have just activated your account, please note that this may take some time to show.",
-        "transaction_confirm_info" : "You are about to send $$XTZ to @$$ ($$) - this transaction is irreversible",
+        "transaction_confirm_info" : "You are about to send $$XTZ to $$ $$ - this transaction is irreversible",
       }
 
     },

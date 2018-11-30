@@ -116,7 +116,7 @@
                         <option ng-repeat="a in accounts track by a.address" value="{{a.address}}">{{a.title}} - {{a.address}}</option>
                       </select>
                     </div>
-                    <div>
+                    <div ng-if="resolvedUnikName.profile">
                       <label>Resolved Address</label>
                       <p>{{toaddress}}</p>
                     </div>
