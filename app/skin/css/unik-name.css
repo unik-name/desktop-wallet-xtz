@@ -193,3 +193,18 @@
   margin-left: 10%;
   padding-left: 0.5rem;
 }
+
+.bind-unik-name {
+  padding: 20px 35px 0;
+}
+
+.bind-unik-name button {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bind-unik-name button,
+.bind-unik-name button:visited,
+.bind-unik-name button:active {
+  outline: none !important;
+}

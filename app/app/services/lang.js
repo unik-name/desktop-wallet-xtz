@@ -209,6 +209,11 @@ app.service('Lang', ["$sce", function($sce) {
         "yes_import_them" : "Yes, import them!",
         "ico_restore_success" : "You have successfully restored your ICO wallet. If you have just activated your account, please note that this may take some time to show.",
         "transaction_confirm_info" : "You are about to send $$XTZ to $$ $$ - this transaction is irreversible",
+        "bind_my_unik_name" : "Bind my @unik-name",
+        "my_unik_name" : "My @unik-name",
+        "binding_success" : "Binding success",
+        "bind_to" : "Your accounts have been successfully added to @$$",
+        "lets_go" : "Let's Go!"
       }
 
     },

@@ -15,9 +15,12 @@
   <div class="mainBody">
     <div class="container">
       <div class="side">
-        <h3>My @unik-name</h3>
+        <h3>{{ translate("my_unik_name") }}</h3>
         <div>
-          <input type="text" name="myUnikName" id="myUnikName" ng-model="myUnikName" placeholder="@unik-name">
+          <input type="text" name="myUnikName" id="myUnikName" ng-model="myUnikName" placeholder="@unik-name" class="form-control">
+        </div>
+        <div class="bind-unik-name">
+          <button ng-disabled="!myUnikName" ng-click="bindAccounts()" class="btn btn-small btn-secondary btn-block">{{ translate("bind_my_unik_name")}}</button>
         </div>
         <h3 style="">{{translate("my_accounts")}}</h3>
         <div class="accountsContainer">

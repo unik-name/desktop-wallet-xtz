@@ -484,6 +484,17 @@ app
     refreshTransactions();
     refreshBalance();
   }
+
+  $scope.bindAccounts = function() {
+    SweetAlert.swal({
+      title: Lang.translate('binding_success'),
+      text: Lang.translate('bind_to', [$scope.myUnikName.replace('@', '')]),
+      type : "success",
+      closeOnConfirm: true,
+      confirmButtonText: Lang.translate('lets_go'),
+    });
+  };
+
   $scope.refresh = function(){
       $scope.loadAccount($scope.account);
   };
