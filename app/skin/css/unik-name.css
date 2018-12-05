@@ -1,20 +1,24 @@
 .unik-name-details {
+  background: #2a2b82;
   display:  flex;
   flex-direction: column;
   border-left: 1px solid #ddd;
   opacity: 1;
-  padding-left: 1rem;
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
 .unik-name-details .card-header {
   padding: 0px;
+  background: #201c60;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .unik-name-details .card-header .card-header-text {
   font-size: 1.2em;
-  /*color: #fff;*/
   font-weight: bold;
-  /*background-color: #201c60;*/
   padding: 1rem 1rem 0.5rem 1rem;
   display: flex;
   align-items: center;
@@ -64,6 +68,10 @@
   padding: 0rem 1.5rem 0.5rem 1.5rem;
 }
 
+.unik-name-details .card-body label {
+  color: #fff !important;
+}
+
 .unik-name-details .card-body .coins {
   margin-top: 0.5rem;
   align-items: center;
@@ -73,10 +81,8 @@
 }
 
 .unik-name-details .card-body .coins .coin {
-  background-color:transparent;
-    color: #EB1459 !important;
-    border: 1px solid #EB1459 !important;
-  color: #000;
+  background-color: #fff;
+    color: #000 !important;
   margin: 0.5rem 0rem;
   padding: 6px 12px;
   border-radius: 30px;
@@ -92,7 +98,7 @@
   display: flex;
   justify-content: flex-start;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
+  margin-bottom: 1rem;
   font-size: 1.1em;
   font-weight: 600;
   flex-direction: row;
@@ -106,7 +112,6 @@
 .unik-name-details .card-body .security .trust .stars {
     display: flex;
     margin-left: 0.25rem;
-    color: #333;
 }
 
 .unik-name-details .card-body .security .unik-check {
@@ -145,8 +150,9 @@
 .unik-name-details .card-body .link a:hover,
 .unik-name-details .card-body .link a:active,
 .unik-name-details .card-body .link a:focus {
-  color: #6C7B8A;
-  text-decoration: none;
+  color: #FFF !important;
+  text-decoration: none !important;
+  outline: none !important;
 }
 
 .animate-show-hide.ng-hide {
